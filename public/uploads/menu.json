@@ -1,0 +1,18 @@
+{
+  "MenuItems": [
+    {
+      "ItemName": "pasta",
+      "ItemDescription":"cheese, chicked",
+      "price": 100,
+      "ItemOptions": [{
+        "Name": "medium",
+        "MaxQty": 120,
+        "Price": 100
+      },{
+          "Name": "small",
+          "MaxQty": 100,
+          "Price": 80
+      }]
+    }
+  ]
+}
