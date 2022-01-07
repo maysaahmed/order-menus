@@ -1,24 +1,78 @@
-# Lumen PHP Framework
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
+# Menu Items API Service lumen
+A REST APIs that ingests json files, parses data and store them in a database, endpoints to display menu items and delete one menu item
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+## Installation
 
-## Official Documentation
+Please check the official lumen installation guide for server requirements before you start. [lumen 8 Documentation](https://lumen.laravel.com/docs/8.x)
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+Clone the repository using terminal
 
-## Contributing
+    git clone https://github.com/maysaahmed/order-menus.git
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Switch to the repo folder
 
-## Security Vulnerabilities
+    cd order-menus
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+Install all the dependencies using composer
 
-## License
+    composer install
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Generate a new application key
+
+    php artisan key:generate
+
+Set the database connection in .env
+   
+    DB_DATABASE=database_name
+    DB_USERNAME=database_user_name
+    DB_PASSWORD=database_password
+    
+Run the database migrations to create 2 table -> menu_items and menu_item_options (**Set the database connection in .env before migrating**)
+
+    php artisan migrate
+
+
+## JSON file structure
+
+    {
+      "MenuItems": [
+        {
+          "ItemName": "pasta",
+          "ItemDescription":"cheese, chicken",
+          "price": 100,
+          "ItemOptions": [{
+            "Name": "medium",
+            "MaxQty": 120,
+            "Price": 100
+          },{
+              "Name": "small",
+              "MaxQty": 100,
+              "Price": 80
+          }]
+        }
+      ]
+    }
+
+
+## Menu Items Endpoints
+
+You can upload json file to create menu items 
+
+    POST {base_url}/api/v1/menuItems
+    
+    
+You can list all menus items you have in the database through
+
+    Get  {base_url}/api/v1/menuItems
+    
+To can get one menu item use:
+    
+    Get  {base_url}/api/v1/menuItems/1
+    
+    1 -> menu item id
+
+
+You can also delete menu item 
+
+    DELETE {base_url}/api/v1/menuItems/1
