@@ -57,12 +57,17 @@ Run the database migrations to create 2 table -> menu_items and menu_item_option
 
 ## Menu Items Endpoints
 
-You can upload json file to create menu items 
+You can upload json file to create menu items, set json file to param called file
 
     POST {base_url}/api/v1/menuItems
     
     
-You can list all menus items you have in the database through
+    
+<img width="855" alt="Screen Shot 2022-01-07 at 5 05 50 PM" src="https://user-images.githubusercontent.com/16673395/148563122-1d0db7d2-d3a3-466c-8a2d-743bf8725245.png">
+
+    
+    
+You can list all menu items you have in the database through
 
     Get  {base_url}/api/v1/menuItems
     
